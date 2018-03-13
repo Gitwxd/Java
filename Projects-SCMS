@@ -23,3 +23,10 @@
 	    jdbc.url=jdbc\:mysql\://localhost\:3306/test
 	    jdbc.username=root
 	    jdbc.password=111111
+    创建测试包com.gyl.basedata.test与测试类SpringUtils
+        测试sessionFactory
+查询包com.gyl.query
+    创建类PageResult并实现查询分页功能
+    创建抽象类public abstract class BaseQuery
+    把页面上的查询条件封装成一个Map<String,Object>
+    public abstract Map<String, Object> buildWhere();
