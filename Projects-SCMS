@@ -10,6 +10,16 @@
 ---------------------------------------------------------------
 基准信息包com.gyl.domain.basedata
     创建部门类Department实现Serializable接口，以及属性生成get() set()方法
-      private Long did;
+      	private Long did;
 	    private String name;
 	    private String description;
+    配置映射文件Department.hbm.xml持久化类Department
+        <class name="com.gyl.domain.basedata.Department" table="department">
+    在创建src/main/resources文件夹下创建com.gyl.spring包，并配置spring文件，同时配置jdbc.properties文件
+        applicationContext-db.xml
+	applicationContext.xml
+	jdbc.properties文件
+	    jdbc.driverClassName=com.mysql.jdbc.Driver
+	    jdbc.url=jdbc\:mysql\://localhost\:3306/test
+	    jdbc.username=root
+	    jdbc.password=111111
