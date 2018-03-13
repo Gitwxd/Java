@@ -1,1 +1,15 @@
-供应链管理系统
+供应链管理系统---应收应付模块&销售管理模块
+整体思路
+    1.分析dao的技术实现
+    2.环境搭建
+    3.创建Web工程
+    4.添加Maven支持
+    5.编辑pom.xml文件
+    6.持久化类和映射文件
+    7.写spring的配置文件
+---------------------------------------------------------------
+基准信息包com.gyl.domain.basedata
+    创建部门类Department，以及属性生成get() set()方法
+      private Long did;
+	    private String name;
+	    private String description;
