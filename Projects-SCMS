@@ -9,7 +9,7 @@
     7.写spring的配置文件
 ---------------------------------------------------------------
 基准信息包com.gyl.domain.basedata
-    创建部门类Department，以及属性生成get() set()方法
+    创建部门类Department实现Serializable接口，以及属性生成get() set()方法
       private Long did;
 	    private String name;
 	    private String description;
