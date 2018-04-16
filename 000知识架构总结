@@ -1,0 +1,41 @@
+1、基础方面
+  XML技术
+  Servlet/Jsp
+  数据库
+  Jdbc技术
+  JavaWeb增强
+    过滤器、监听器、文件上传与下载、国际化
+
+组件：
+	  Dom4J/Xpath、DBUtils、C3p0、BeanUtils、log4J
+    Struts  /  Spring   /  Hibernate
+    
+2、泛型
+  知识点
+      基本用法、泛型擦除、泛型类/泛型方法/泛型接口、泛型关键字、反射泛型
+      
+2.1  泛型是JDK1.5以后才有， 可以在编译时期进行类型检查，且可以避免频繁类型转化 
+
+// 运行时期异常 
+	@Test
+	public void testGeneric() throws Exception {
+		// 集合的声明
+		List list = new ArrayList();
+		list.add("China");
+		list.add(1);
+		
+		// 集合的使用
+		String str = (String) list.get(1);
+		
+	}
+	
+	// 使用泛型
+	@Test
+	public void testGeneric2() throws Exception {
+		// 声明泛型集合的时候指定元素的类型
+		List<String> list = new ArrayList<String>();
+		list.add("China");
+//		list.add(1);// 编译时期报错
+		
+		String str = list.get(1); 
+	}
