@@ -1,0 +1,25 @@
+github上下载地址:https://github.com/mybatis/spring.git
+建议使用IDEA进行开发与分析,效率高.
+
+首先看下目录结构:
+
+annotations：注解定义，我们知道mybatis配置可以采用XML文件形式，也可以采用注解形式
+binding：主要是mapper动态代理绑定相关的类，比较重要的是MapperProxy,它是mapper动态代理的InvocationHandler，mapper的方法调用都是通过它的invoke方法代理的。
+builder：各种builder模式构造对象所使用的类，比较重要的是XMLConfigBuilder，它解析了XML文件，并利用XML文件中的键值对，设置了Configuration对象的相关变量。它是mybatis初始化阶段很重要的类。
+cache：实现缓存的类，包括cache实体和cache策略。mybatis中很多地方都是用到了cache，比如sqlSession内的一级缓存，mapper内的二级缓存等。
+cursor：游标，在mybatis 3.4.0中，新增了返回值为游标cursor的方法，如sqlSession的selectCursor。游标的优点在于，当查询大量数据时，不需要一次性将所有数据得到，可以利用游标来逐个或分批处理，从而大大减少内存占用。mybatis的默认cursor实现类为DefaultCursor。
+dataSource：数据源，描述了数据库信息，如username password等。创建数据库环境environment时配置数据源dataSource。dataSource又分为JNDI，pooled和unPooled。pooled利用对象池来管理对象的创建和销毁，可以大大减少对象的创建和销毁次数，从而减少对系统资源的占用，典型的享元模式
+exceptions：异常类
+executor：mybatis执行阶段最重要的类，它是运行调度器，由他来调度StatementHandler ParameterHandler ResultSetHandler的执行。SqlSession的select update等读写数据库的方法都是通过代理模式，由Executor来完成的。它有SimpleExecutor BatchExecutor ReuseExecutor三个实现，他们共同的基类是BaseExecutor。后面讲解mybatis读写数据库的流程时会重点讲解。
+io：输入输出类，如资源管理类Resource，管理资源的输入输出流。
+jdbc：对JDBC的一些简单封装，适配mybatis。如sqlRunner，利用jdbc的读写数据库的方法来操作数据库。
+lang：java语言相关的类，目前只有@UsesJava7 @UsesJava8两个注解，不用去管他们
+logging：log日志类，有Log4jImpl，Slf4jImpl等对log4j和slf4j的简单封装后的日志实现类等。
+mapping：比较复杂，解析数据库映射mapper。有mapper.xml和注解两种方式。这里面的类比较多，也比较复杂，我们后面 讲解mybatis初始化和运行的几个章节，都会详细讲解其中关键的类。
+parsing：文件解析用到的类，比较底层，一般不用特别去care。如解析XML用到的XPathParser.
+plugin: 插件，mybatis一个比较强大的功能在于，可以利用动态代理来拦截mybatis的一些默认流程，从而实现用户自定义。比如mybatis运行阶段四大组件Executor StatementHandler ParameterHandler ResultSetHandler等都可以由用户自定义插件来实现。
+reflection：反射用到的类，mybatis很多地方都是用了反射，毕竟Java反射使得代码灵活度大大提高。mapper接口，plugin，sqlSessionTemplete都是使用动态代理生成代理对象，来执行相关方法的。
+scripting：脚本语言解析相关的类，不用care
+session：mybatis初始化和运行阶段最重要的类都在这儿，它们是mybatis的门面，和用户打交道最多。比较关键的为SqlSession，SqlSessionFactory，Configuration。后面mybatis初始化和运行阶段都会一一讲解。
+transaction：事务，有JDBC和MANAGED两种，后面会详细讲解。
+type：mybatis内置的typeHandler，用来做数据库和Java类的转换，比如varchar到String
